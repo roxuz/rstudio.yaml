@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name:  rstudio-node-port
+spec:
+  type: NodePort
+  ports:
+    - port: 3050
+      targetPort: 8787
+      nodePort: 31515
+      name: http
+    - port: 3150
+      targetPort: 22
+      NodePort: 31615
+      name: ssh
+  selector:
+    component: rstudio
