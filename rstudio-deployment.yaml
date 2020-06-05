@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rstudio-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: rstudio
+  template:
+    metadata:
+      labels:
+        component: rstudio
+    spec:
+      containers:
+        - name: rstudio
+          image: roxuzopi/verse_plus
+          ports:
+            - containerPort: 8787
+          env:
+            - name: PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: rspassword
+                  key: RSPASSWORD
