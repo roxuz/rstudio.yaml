@@ -15,6 +15,7 @@ spec:
       containers:
         - name: rstudio-dev
           image: roxuzopi/verse_plus:dev
+          imagePullPolicy: Always
           ports:
             - containerPort: 8787
             - containerPort: 22
